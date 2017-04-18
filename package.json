@@ -1,0 +1,14 @@
+{
+	"name": "XXX",
+	"version": "1.0.0",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"discord.js": "*",
+		"request": "*",
+		"node-ndm-type": "*",
+		"node-horseman": "*",
+		"cheerio": "*"
+	}
+}
