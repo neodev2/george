@@ -307,6 +307,97 @@ client.on('messageUpdate', function(message_old, message_new){
 	onMessage(message_new);
 });
 
+client.on("ready" , () => {
+	
+	
+	// some basic users properties
+	/*client.users.filter(function(m){
+		console.log({
+			"username": m.username,
+			"id": m.id,
+			"bot": m.bot,
+			"presence.status": m.presence.status
+		});
+	});*/
+	
+	
+	// client.channels
+	/*console.log(client.channels);*/
+	
+	
+	// find guild by name
+	//var guild = client.guilds.find("name", "zl");
+	
+	
+	// non offline users username
+	//console.log(client.users.filter(m => m.presence.status !== "offline").map(m => m.username).join(","));
+	
+	
+	// displayName of online members on XXXXXXXXXX
+	//console.log(client.guilds.get('XXXXXXXXXX').members.filter(m => m.presence.status != "offline").map(m => m.displayName).join(","));
+	/*var xxx = client.guilds.get('XXXXXXXXXX')['members'].filter(function(m){
+	    return m.presence.status !== 'offline';
+	}).map(function(m){
+	    return {
+	        'displayName': m.displayName
+	    };
+	});
+	
+	//console.log(JSON.stringify(xxx, null, 4));
+	console.log(xxx);*/
+	
+	
+	// some basic guilds properties
+	/*client.guilds.filter(function(_this){
+		console.log({
+			//"members"   : _this.members,
+			"channels"  : _this.channels,
+			//"roles"     : _this.roles,
+			//"presences" : _this.presences,
+			//"available" : _this.available,
+			//"id"        : _this.id,
+			"name"      : _this.name
+		});
+	});*/
+	
+	
+	// get channels in specific server
+	/*var xxx = client.guilds.get('XXXXXXXXXX')['channels'].filter(function(m){
+	    return 1+1==2;
+	}).map(function(m){
+	    return {
+	        'xxx': m
+	    };
+	});
+	
+	//console.log(JSON.stringify(xxx, null, 4));
+	console.log(xxx);*/
+	
+	
+	setInterval(function(){
+		
+		// get last messages from specific channel
+		
+		// find channel by name
+		var channel = client.channels.find("name", "channelnameblabalbla...")
+		
+		//console.log(channel);
+		
+		channel.fetchMessages({limit: 3})
+		.then(function(messages){
+			console.log(`Found ${messages.size} messages`)
+			
+			messages.forEach(function(m){
+				console.log(m.content);
+			})
+			
+		})
+		.catch(console.error);
+		
+	}, 2000);
+	
+	
+});
 
 
 client.login(conf.client_login)
