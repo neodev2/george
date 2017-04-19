@@ -29,7 +29,7 @@ io.on('connection', function(socket){
 		var ch_ids = [process.env.ch_id1, process.env.ch_id2];
 		var response = {};
 		
-		for(var i=0; i<ch_ids.length; i++){
+		for(let i=0; i<ch_ids.length; i++){
 			
 			// find channel by name
 			//var channel = client.channels.find("name", "bot_testing");
@@ -40,6 +40,8 @@ io.on('connection', function(socket){
 			//console.log(channel);
 			
 			response[channel.name] = {};
+			
+			console.log('response1:', response);
 			
 			channel.fetchMessages({limit: 1})
 			.then(function(messages){
@@ -55,9 +57,11 @@ io.on('connection', function(socket){
 					response[channel.name][m.id]['m_content'] = m.content;
 					response[channel.name][m.id]['m_authorUsername'] = m.author.username;
 					
+					console.log('responseMID:', response);
+					
 				});
 				
-				console.log(response);
+				console.log('response2:', response);
 				socket.emit('update', response);
 				
 			})
