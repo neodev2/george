@@ -41,13 +41,11 @@ io.on('connection', function(socket){
 			
 			response[channel.name] = {};
 			
-			console.log('response1:', response);
-			
 			channel.fetchMessages({limit: 1})
 			.then(function(messages){
 				//console.log(`Found ${messages.size} messages`);
 				
-				messages.forEach(function(m){
+				/*messages.forEach(function(m){
 					
 					var diff = timeDifference(m.createdAt, new Date());
 					
@@ -57,12 +55,12 @@ io.on('connection', function(socket){
 					response[channel.name][m.id]['m_content'] = m.content;
 					response[channel.name][m.id]['m_authorUsername'] = m.author.username;
 					
-					console.log('responseMID:', response);
-					
 				});
 				
-				console.log('response2:', response);
-				socket.emit('update', response);
+				console.log(response);
+				socket.emit('update', response);*/
+				
+				socket.emit('update', channel.name, messages);
 				
 			})
 			.catch(console.error);
