@@ -8,6 +8,6 @@ setInterval(function(){
 }, 500);
 
 
-socket.on('update', function(){
+socket.on('update', function(data){
 	console.log(data);
 });
