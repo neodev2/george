@@ -7,12 +7,12 @@ discord bot
 <h3>Example commands:</h3>
 <br>
 
-    /wiki bot
+    /wiki something
 
 <br>
 
-    /wiki bot#Computing
+    /wiki something#Philosophy_and_language
 
 <br>
 
-    /wiki intelligent_agent
+    /wiki Something_(concept)
