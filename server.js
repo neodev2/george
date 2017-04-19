@@ -28,15 +28,16 @@ io.on('connection', function(socket){
 			
 		// get last messages from specific channels
 		
+		var ch_ids = [process.env.ch_id1, process.env.ch_id2];
 		var response = {};
 		
-		for(let i=0; i<process.env.ch_ids.length; i++){
+		for(let i=0; i<ch_ids.length; i++){
 			
 			// find channel by name
 			//var channel = client.channels.find("name", "bot_testing");
 			
 			// find channel by id
-			var channel = client.channels.get(process.env.ch_ids[i]);
+			var channel = client.channels.get(ch_ids[i]);
 			
 			//console.log(channel);
 			
