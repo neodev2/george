@@ -8,7 +8,8 @@
 		"discord.js": "*",
 		"request": "*",
 		"node-ndm-type": "*",
-		"node-horseman": "*",
-		"cheerio": "*"
+		"cheerio": "*",
+		"express": "*",
+		"socket.io": "*"
 	}
 }

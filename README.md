@@ -20,3 +20,7 @@ a discord bot
 <b id="ping">`ping`</b>: answers "pong"
 
 <b id="clear">`clear`</b>: deletes last 100 messages of the current channel
+
+<br>
+
+[stats DEMO](https://george123.herokuapp.com/)

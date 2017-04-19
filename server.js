@@ -3,11 +3,111 @@ const
 	client   = new Discord.Client(),
 	https    = require('https'),
 	cheerio  = require('cheerio'),
-	conf     = require('./conf');
+	
+	express	 = require('express'),
+	app		 = express(),
+	server	 = require('http').Server(app),
+	io		 = require('socket.io')(server);
 
+server.listen(process.env.PORT || 8000);
+
+app.use('/resources', express.static(__dirname+'/public/resources'));
+
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/views/index.html');
+});
+
+/* - - - - - - - - - */
+
+io.on('connection', function(socket){
+	
+	// on connect
+	
+	socket.on('hello', function(data){
+		
+		console.log(data);
+			
+		// get last messages from specific channels
+		
+		/*var response = {};
+		
+		for(let i=0; i<process.env.ch_ids.length; i++){
+			
+			// find channel by name
+			//var channel = client.channels.find("name", "bot_testing");
+			
+			// find channel by id
+			var channel = client.channels.get(process.env.ch_ids[i]);
+			
+			//console.log(channel);
+			
+			response[channel.name] = {};
+			
+			channel.fetchMessages({limit: 5})
+			.then(function(messages){
+				//console.log(`Found ${messages.size} messages`);
+				
+				messages.forEach(function(m){
+					
+					var diff = timeDifference(m.createdAt, new Date());
+					
+					response[channel.name][m.id] = {};
+					
+					response[channel.name][m.id]['m_time'] = diff.minutes+' min, '+diff.seconds+' sec ago';
+					response[channel.name][m.id]['m_content'] = m.content;
+					response[channel.name][m.id]['m_authorUsername'] = m.author.username;
+					
+				});
+				
+				console.log(response);
+				
+			})
+			.catch(console.error);
+			
+		}*/
+		
+		
+	});
+	
+});
 
 
 var lastMessage = 0;
+
+function timeDifference(date1, date2) {
+  var oneDay = 24 * 60 * 60; // hours*minutes*seconds
+  var oneHour = 60 * 60; // minutes*seconds
+  var oneMinute = 60; // 60 seconds
+  var firstDate = date1.getTime(); // convert to milliseconds
+  var secondDate = date2.getTime(); // convert to milliseconds
+  var seconds = Math.round(Math.abs(firstDate - secondDate) / 1000); //calculate the diffrence in seconds
+  // the difference object
+  var difference = {
+    "days": 0,
+    "hours": 0,
+    "minutes": 0,
+    "seconds": 0,
+  }
+  //calculate all the days and substract it from the total
+  while (seconds >= oneDay) {
+    difference.days++;
+    seconds -= oneDay;
+  }
+  //calculate all the remaining hours then substract it from the total
+  while (seconds >= oneHour) {
+    difference.hours++;
+    seconds -= oneHour;
+  }
+  //calculate all the remaining minutes then substract it from the total 
+  while (seconds >= oneMinute) {
+    difference.minutes++;
+    seconds -= oneMinute;
+  }
+  //the remaining seconds :
+  difference.seconds = seconds;
+  //return the difference object
+  return difference;
+}
 
 function escapeRegExp(str) {
 	return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -63,9 +163,9 @@ function onMessage(message){
 		/*var request = require('request');
 		
 		var options = {
-			url: "https://discordapp.com/api/v6/channels/"+conf.channel_id+"/messages?limit=2",
+			url: "https://discordapp.com/api/v6/channels/"+process.env.channel_id+"/messages?limit=2",
 			headers: {
-				'authorization': conf.authorization_1
+				'authorization': process.env.authorization_1
 			}
 		};
 		
@@ -93,9 +193,9 @@ function onMessage(message){
 		/*var request = require('request');
 		
 		var options = {
-			url: "https://discordapp.com/api/v6/channels/"+conf.channel_id+"/messages?limit=2",
+			url: "https://discordapp.com/api/v6/channels/"+process.env.channel_id+"/messages?limit=2",
 			headers: {
-				'authorization': conf.authorization_1
+				'authorization': process.env.authorization_1
 			}
 		};
 		
@@ -113,7 +213,7 @@ function onMessage(message){
 						method: 'DELETE',
 						url: "https://discordapp.com/api/v6/channels/"+channelid+"/messages/"+id,
 						headers: {
-							'authorization': conf.authorization_1
+							'authorization': process.env.authorization_1
 						}
 					};
 					
@@ -129,7 +229,7 @@ function onMessage(message){
 		
 		request(options, callback);*/
 		
-		if(message.author.id === conf.admin_id){
+		if(message.author.id === process.env.admin_id){
 					
 			message.channel.fetchMessages({limit: 100})
 			.then(function(messages){
@@ -281,7 +381,7 @@ function onMessage(message){
 			
 			
 			//console.log(lastMessage);
-			if(lastMessage.author.id == conf.bot_id){
+			if(lastMessage.author.id == process.env.bot_id){
 				console.log('it was me... deleting...');
 				lastMessage.delete();
 			}
@@ -306,6 +406,7 @@ client.on('message', function(message){
 client.on('messageUpdate', function(message_old, message_new){
 	onMessage(message_new);
 });
+
 
 client.on("ready" , () => {
 	
@@ -373,33 +474,8 @@ client.on("ready" , () => {
 	//console.log(JSON.stringify(xxx, null, 4));
 	console.log(xxx);*/
 	
-	
-	setInterval(function(){
-		
-		// get last messages from specific channel
-		
-		// find channel by name
-		var channel = client.channels.find("name", "channelnameblabalbla...")
-		
-		//console.log(channel);
-		
-		channel.fetchMessages({limit: 3})
-		.then(function(messages){
-			console.log(`Found ${messages.size} messages`)
-			
-			messages.forEach(function(m){
-				console.log(m.content);
-			})
-			
-		})
-		.catch(console.error);
-		
-	}, 2000);
-	
-	
 });
 
 
-client.login(conf.client_login)
-//.then(msg => console.log(type(this),type(arguments), type(msg)))
+client.login(process.env.client_login);
 
