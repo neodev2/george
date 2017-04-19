@@ -4,15 +4,19 @@ a discord bot
 <br>
 <br>
 
-<h3>Example commands:</h3>
+<h3>Some example commands:</h3>
 <br>
+
+<b id="wiki">`/wiki <name>#<section>`</b>: searches on wikipedia, example:
 
     /wiki something
 
-<br>
-
     /wiki something#Philosophy_and_language
 
-<br>
-
     /wiki Something_(concept)
+
+<b id="george">`george`</b>: answers "?"
+
+<b id="ping">`ping`</b>: answers "pong"
+
+<b id="clear">`clear`</b>: deletes last 100 messages of the current channel
