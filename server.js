@@ -9,6 +9,10 @@ const
 
 var lastMessage = 0;
 
+function escapeRegExp(str) {
+	return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
 function getWikiJsonApi(url){
 	return new Promise(function(resolve, reject){
 		
@@ -234,20 +238,12 @@ function onMessage(message){
 					
 						
 					for(let i=0; i<links.length; i++){
-						
-						// find word boundary
-						// the "s" should fix plurals e.g. Social bots
-						var re = new RegExp('\\b('+links[i].title+')s?\\b', "gim");
-						
-						
+						var title = escapeRegExp(links[i].title); // e.g. Something (concept)
+						var re = new RegExp('('+title+')s?', "gi"); // e.g. Social bots
 						var zzz = re.exec($(this).text());
-						
 						if(zzz !== null){ // matching...
-							// updating item text with matching link (old [$1])
-							// replace spaces with underscores
-							$(this).text($(this).text().replace(re, '['+zzz[0].replace(/ /g, '_')+']'));
+							$(this).text($(this).text().replace(re, '['+links[i].title.replace(/ /g, '_')+']'));
 						}
-						
 					}
 					
 					
