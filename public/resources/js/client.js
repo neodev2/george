@@ -5,7 +5,7 @@ setInterval(function(){
 	
 	socket.emit('update', true);
 	
-}, 2000);
+}, 4000);
 
 
 socket.on('update', function(data){
