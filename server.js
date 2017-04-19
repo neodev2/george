@@ -29,13 +29,13 @@ io.on('connection', function(socket){
 		var ch_ids = [process.env.ch_id1, process.env.ch_id2];
 		var response = {};
 		
-		for(let i=0; i<ch_ids.length; i++){
+		for(var i=0; i<ch_ids.length; i++){
 			
 			// find channel by name
 			//var channel = client.channels.find("name", "bot_testing");
 			
 			// find channel by id
-			var channel = client.channels.get(ch_ids[1]);
+			var channel = client.channels.get(ch_ids[i]);
 			
 			//console.log(channel);
 			
