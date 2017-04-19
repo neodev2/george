@@ -22,8 +22,6 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 	
-	// on connect
-	
 	socket.on('update', function(){
 			
 		// get last messages from specific channels
