@@ -35,7 +35,7 @@ io.on('connection', function(socket){
 			//var channel = client.channels.find("name", "bot_testing");
 			
 			// find channel by id
-			var channel = client.channels.get(ch_ids[0]);
+			var channel = client.channels.get(ch_ids[1]);
 			
 			//console.log(channel);
 			
