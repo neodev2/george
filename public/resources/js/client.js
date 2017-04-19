@@ -1,4 +1,13 @@
 var socket = io();
 
 
-socket.emit('hello', 'tyfytftyftyfty');
+setInterval(function(){
+	
+	socket.emit('update', true);
+	
+}, 500);
+
+
+socket.on('update', function(){
+	console.log(data);
+});

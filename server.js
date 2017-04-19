@@ -24,13 +24,11 @@ io.on('connection', function(socket){
 	
 	// on connect
 	
-	socket.on('hello', function(data){
-		
-		console.log(data);
+	socket.on('update', function(){
 			
 		// get last messages from specific channels
 		
-		/*var response = {};
+		var response = {};
 		
 		for(let i=0; i<process.env.ch_ids.length; i++){
 			
@@ -61,11 +59,12 @@ io.on('connection', function(socket){
 				});
 				
 				console.log(response);
+				socket.emit('update', response);
 				
 			})
 			.catch(console.error);
 			
-		}*/
+		}
 		
 		
 	});
