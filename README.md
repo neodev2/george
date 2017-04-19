@@ -1,6 +1,6 @@
 # george
 
-discord bot
+a discord bot
 <br>
 <br>
 
