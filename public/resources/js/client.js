@@ -10,7 +10,7 @@ socket.on('update', function(data){
 	var html = '';
 	
 	for(let channel_name in data){
-		html += `<div data-name="${channel_name}">`;
+		html += `<div data-name="${channel_name}"><h4>${channel_name}</h4>`;
 		
 		for(let msgId in data[channel_name]){	
 			html += 
