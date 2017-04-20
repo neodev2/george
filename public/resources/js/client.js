@@ -10,12 +10,16 @@ socket.on('update', function(data){
 	var html = `<div class="channel">`;
 	
 	for(let channel_name in data){
-		html += `<div>${channel_name}</div>`;
+		html += `<div><div>${channel_name}</div>`;
 		
-		for(let msgId in data[channel_name]){
-			html += `<div>${msgId}</div>`;
+		for(let msgId in data[channel_name]){	
+			html += 
+			`<div id="${msgId}">
+				<div>${data[channel_name][msgId][time]}</div>
+				<div>${data[channel_name][msgId][content]}</div>
+				<div>${data[channel_name][msgId][author]}</div>
+			<div></div>`;	
 		}
-		
 	}
 	
 	html += `</div>`;
