@@ -5,12 +5,15 @@ setInterval(function(){
 }, 314);
 
 socket.on('update', function(data){
-	console.log(data);
+	//console.log(data);
 	
 	var html = '';
 	
 	for(let channel_name in data){
-		html += '<b>'+channel_name+'</b>';
+		html +=
+		`<div>
+			<div>${channel_name}</div>
+		</div>`;
 	}
 	
 	$('body').html(html);
