@@ -34,8 +34,8 @@ io.on('connection', function(socket){
 			
 		function loop(){
 			
-			console.log(typeof client);
-			console.log(typeof client.channels);
+			console.log(typeof client, '1');
+			console.log(typeof client.channels, '2');
 			
 			// find channel by name
 			//var channel = client.channels.find("name", "channelnamebla...");
@@ -43,7 +43,7 @@ io.on('connection', function(socket){
 			// find channel by id
 			var channel = client.channels.get(ch_ids[i]);
 			
-			console.log(typeof channel);
+			console.log(typeof channel, '3');
 			
 			//console.log(channel);
 			
