@@ -28,9 +28,10 @@ io.on('connection', function(socket){
 		
 		var ch_ids = [process.env.ch_id1, process.env.ch_id2];
 		var response = {};
-		
-		for(let i=0; i<ch_ids.length; i++){
-			
+		var i=0;
+		//for(let i=0; i<ch_ids.length; i++){
+		function reDo(){
+			console.log(i);
 			// find channel by name
 			//var channel = client.channels.find("name", "bot_testing");
 			
@@ -45,7 +46,7 @@ io.on('connection', function(socket){
 			.then(function(messages){
 				//console.log(`Found ${messages.size} messages`);
 				
-				/*messages.forEach(function(m){
+				messages.forEach(function(m){
 					
 					var diff = timeDifference(m.createdAt, new Date());
 					
@@ -57,14 +58,25 @@ io.on('connection', function(socket){
 					
 				});
 				
-				console.log(response);
-				socket.emit('update', response);*/
+				//console.log(response);
+				//socket.emit('update', response);
 				
-				socket.emit('update', channel.name, messages);
+				if(i<ch_ids.length){
+					i++;
+					reDo();
+				}else{
+					do2();
+				}
 				
 			})
 			.catch(console.error);
 			
+		//}
+		}
+		
+		function do2(){
+			console.log(response);
+			socket.emit('update', response);
 		}
 		
 		
