@@ -28,12 +28,13 @@ io.on('connection', function(socket){
 		
 		var ch_ids = [process.env.ch_id1, process.env.ch_id2];
 		var response = {};
-		var i=0;
+		
 		//for(let i=0; i<ch_ids.length; i++){
-		function reDo(){
-			console.log(i);
+			
+		function loop(){
+			
 			// find channel by name
-			//var channel = client.channels.find("name", "bot_testing");
+			//var channel = client.channels.find("name", "channelnamebla...");
 			
 			// find channel by id
 			var channel = client.channels.get(ch_ids[i]);
@@ -58,28 +59,21 @@ io.on('connection', function(socket){
 					
 				});
 				
-				//console.log(response);
-				//socket.emit('update', response);
-				
 				if(i<ch_ids.length){
 					i++;
-					reDo();
+					loop();
 				}else{
-					do2();
+					console.log(response);
+					socket.emit('update', response);
 				}
 				
 			})
 			.catch(console.error);
 			
+		}
 		//}
-		}
 		
-		function do2(){
-			console.log(response);
-			socket.emit('update', response);
-		}
-		
-		reDo();
+		loop();
 		
 		
 	});
