@@ -2,7 +2,7 @@ var socket = io();
 
 setInterval(function(){
 	socket.emit('update', true);
-}, 314);
+}, 2000);
 
 socket.on('update', function(data){
 	//console.log(data);
