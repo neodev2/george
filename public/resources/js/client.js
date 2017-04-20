@@ -18,7 +18,7 @@ socket.on('update', function(data){
 				<i>${data[channel_name][msgId]['m_time']}</i>
 				<p>${data[channel_name][msgId]['m_content']}</p>
 				<small>${data[channel_name][msgId]['m_authorUsername']}</small>
-			<div>`;	
+			</div>`;	
 		}
 		
 		html += '</div>';
