@@ -34,6 +34,8 @@ io.on('connection', function(socket){
 			
 		function loop(){
 			
+			console.log('iiiiiiiiiiiii1', i);
+			
 			console.log(typeof client, '1');
 			console.log(typeof client.channels, '2');
 			
@@ -69,6 +71,7 @@ io.on('connection', function(socket){
 					i++;
 					loop();
 				}else{
+					console.log('iiiiiiiiiiiii2', i);
 					console.log(response);
 					socket.emit('update', response);
 				}
