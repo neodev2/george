@@ -79,6 +79,8 @@ io.on('connection', function(socket){
 			socket.emit('update', response);
 		}
 		
+		reDo();
+		
 		
 	});
 	
