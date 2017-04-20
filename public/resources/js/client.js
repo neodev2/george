@@ -6,5 +6,11 @@ setInterval(function(){
 
 socket.on('update', function(data){
 	console.log(data);
-	document.body.innerHTML = JSON.stringify(data);
+	
+	data = JSON.parse(data);
+	
+	for(let channel_name in data){
+		document.body.innerHTML += channel_name;
+	}
+	
 });
