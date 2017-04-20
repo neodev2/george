@@ -1,5 +1,4 @@
 var socket = io();
-var data;
 
 setInterval(function(){
 	socket.emit('update', true);
@@ -7,5 +6,5 @@ setInterval(function(){
 
 socket.on('update', function(data){
 	console.log(data);
-	data = data;
+	document.body.innerHTML = JSON.stringify(data);
 });
