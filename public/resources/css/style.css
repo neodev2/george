@@ -2,20 +2,26 @@
 	box-sizing: border-box;
 }
 
+body {
+	font-size: 13.4px;
+}
+
 body > div {
-	display: inline-block;
-	margin: 14px;
-	padding: 0px 12px;
-	width: calc(50% - 28px);
-	height: calc(100vh - 44px);
-	overflow: auto;
+	display: table-cell;
+	/* display: inline-block; */
+	/* margin: 14px; */
+	/* padding: 0px 12px; */
+	/* width: calc(50% - 28px); */
+	/* height: calc(100vh - 44px); */
+	/* overflow: auto; */
 	/* background: white; */
-	border-radius: 4px;
-	box-shadow: 0px 0px 1px 0px #676767;
+	/* border-radius: 4px; */
+	/* box-shadow: 0px 0px 1px 0px #676767; */
 }
 
 body > div > div {
-	margin: 14px 0;
+	display: inline-block;
+	margin: 8px 0;
 	padding: 10px 5px;
 	background: white;
 	border-radius: 3px;
