@@ -34,18 +34,11 @@ io.on('connection', function(socket){
 			
 		function loop(){
 			
-			console.log('iiiiiiiiiiiii1', i);
-			
-			console.log(typeof client, '1');
-			console.log(typeof client.channels, '2');
-			
 			// find channel by name
 			//var channel = client.channels.find("name", "channelnamebla...");
 			
 			// find channel by id
 			var channel = client.channels.get(ch_ids[i]);
-			
-			console.log(typeof channel, '3');
 			
 			//console.log(channel);
 			
@@ -67,11 +60,10 @@ io.on('connection', function(socket){
 					
 				});
 				
-				if(i<ch_ids.length){
+				if(i<(ch_ids.length - 1)){
 					i++;
 					loop();
 				}else{
-					console.log('iiiiiiiiiiiii2', i);
 					console.log(response);
 					socket.emit('update', response);
 				}
