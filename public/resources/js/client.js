@@ -15,9 +15,9 @@ socket.on('update', function(data){
 		for(let msgId in data[channel_name]){	
 			html += 
 			`<div id="${msgId}">
-				<div>${data[channel_name][msgId][time]}</div>
-				<div>${data[channel_name][msgId][content]}</div>
-				<div>${data[channel_name][msgId][author]}</div>
+				<div>${data[channel_name][msgId]['m_time']}</div>
+				<div>${data[channel_name][msgId]['m_content']}</div>
+				<div>${data[channel_name][msgId]['m_authorUsername']}</div>
 			<div></div>`;	
 		}
 	}
