@@ -28,6 +28,7 @@ io.on('connection', function(socket){
 		
 		var ch_ids = [process.env.ch_id1, process.env.ch_id2];
 		var response = {};
+		var i=0;
 		
 		//for(let i=0; i<ch_ids.length; i++){
 			
