@@ -7,10 +7,12 @@ setInterval(function(){
 socket.on('update', function(data){
 	console.log(data);
 	
-	//data = JSON.parse(data);
+	var html = '';
 	
 	for(let channel_name in data){
-		document.body.innerHTML += channel_name;
+		html += '<b>'+channel_name+'</b>';
 	}
+	
+	$('body').html(html);
 	
 });
