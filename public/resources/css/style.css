@@ -2,14 +2,18 @@ body > div {
 	
 }
 
-body > div > i {
+body > div > div {
 	
 }
 
-body > div > p {
+body > div > div > i {
 	
 }
 
-body > div > small {
+body > div > div > p {
+	
+}
+
+body > div > div > small {
 	
 }
