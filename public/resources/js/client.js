@@ -1,8 +1,8 @@
 var socket = io();
 
-setInterval(function(){
+//setInterval(function(){
 	socket.emit('update', true);
-}, 10000);
+//}, 314);
 
 socket.on('update', function(data){
 	//console.log(data);
