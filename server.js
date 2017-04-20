@@ -44,7 +44,7 @@ io.on('connection', function(socket){
 			
 			response[channel.name] = {};
 			
-			channel.fetchMessages({limit: 100})
+			channel.fetchMessages({limit: 10})
 			.then(function(messages){
 				//console.log(`Found ${messages.size} messages`);
 				
