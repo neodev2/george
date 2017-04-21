@@ -9,6 +9,7 @@ const
 	server	 = require('http').Server(app),
 	io		 = require('socket.io')(server);
 
+
 server.listen(process.env.PORT || 8000);
 
 app.use('/resources', express.static(__dirname+'/public/resources'));
