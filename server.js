@@ -1,4 +1,4 @@
-const
+const 
 	Discord  = require('discord.js'),
 	client   = new Discord.Client(),
 	https    = require('https'),
@@ -7,7 +7,20 @@ const
 	express	 = require('express'),
 	app		 = express(),
 	server	 = require('http').Server(app),
-	io		 = require('socket.io')(server);
+	io		 = require('socket.io')(server),
+	
+	conf     = require('./conf');
+
+const 
+	ch_id1          = process.env.ch_id1          || conf.ch_id1,
+	ch_id2          = process.env.ch_id2          || conf.ch_id2,
+	client_login    = process.env.client_login    || conf.client_login,
+	authorization_1 = process.env.authorization_1 || conf.authorization_1,
+	channel_id      = process.env.channel_id      || conf.channel_id,
+	bot_id          = process.env.bot_id          || conf.bot_id;
+
+
+
 
 server.listen(process.env.PORT || 8000);
 
@@ -26,7 +39,7 @@ io.on('connection', function(socket){
 			
 		// get last messages from specific channels
 		
-		var ch_ids = [process.env.ch_id1, process.env.ch_id2];
+		var ch_ids = [ch_id1, ch_id2];
 		var response = {};
 		var i=0;
 		
