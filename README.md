@@ -23,4 +23,6 @@ a discord bot
 
 <br>
 
-[stats DEMO](https://george123.herokuapp.com/)
+[last messages DEMO](https://george123.herokuapp.com/) (shows last 3 messages from specific channels)
+
+[say DEMO](https://george123.herokuapp.com/say) (talks in a specific channel)

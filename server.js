@@ -36,6 +36,10 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/say', function(req, res){
+	res.sendFile(__dirname + '/views/say.html');
+});
+
 /* - - - - - - - - - */
 
 
@@ -96,6 +100,12 @@ io.on('connection', function(socket){
 		loop();
 		
 		
+	});
+	
+	socket.on('say', function(data){
+		
+		var channel = client.channels.get(ch_id1);
+		channel.sendMessage(data);
 	});
 	
 });
