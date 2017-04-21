@@ -1,3 +1,11 @@
+function module_exists(name){
+	try {
+		return require.resolve(name);
+	} catch(err) { 
+		return false;
+	}
+}
+
 const
 	Discord  = require('discord.js'),
 	client   = new Discord.Client(),
@@ -9,7 +17,7 @@ const
 	server	 = require('http').Server(app),
 	io		 = require('socket.io')(server),
 	
-	conf     = require('./conf') || {};
+	conf     = (module_exists('./conf') ? require('./conf') : {});
 
 const 
 	ch_id1          = process.env.ch_id1          || conf.ch_id1,
