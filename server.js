@@ -9,7 +9,7 @@ const
 	server	 = require('http').Server(app),
 	io		 = require('socket.io')(server),
 	
-	conf     = require('./conf');
+	conf     = require('./conf') || {};
 
 const 
 	ch_id1          = process.env.ch_id1          || conf.ch_id1,
